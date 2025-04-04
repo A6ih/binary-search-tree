@@ -43,4 +43,49 @@ export default class Tree {
 
     return node;
   }
+
+  // Iterative insert
+
+  //   insert(value) {
+  //     if (!this.root) {
+  //       return (this.root = new Node(value));
+  //     }
+  //     let current = this.root;
+
+  //     while (current) {
+  //       if (value === current.data) {
+  //         return console.log("Value already exist in the tree");
+  //       } else if (value < current.data) {
+  //         if (current.left === null) {
+  //           return (current.left = new Node(value));
+  //         } else {
+  //           current = current.left;
+  //         }
+  //       } else {
+  //         if (current.right === null) {
+  //           return (current.right = new Node(value));
+  //         } else {
+  //           current = current.right;
+  //         }
+  //       }
+  //     }
+  //   }
+
+  insert(value, node = this.root) {
+    if (!node) {
+      return (node = new Node(value));
+    }
+
+    if (value === node.data) {
+      return node;
+    }
+
+    if (value < node.data) {
+      node.left = this.insert(value, node.left);
+    } else {
+      node.right = this.insert(value, node.right);
+    }
+
+    return node;
+  }
 }
