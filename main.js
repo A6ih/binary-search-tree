@@ -20,6 +20,6 @@ test.insert(2);
 test.insert(1);
 test.delete(1);
 test.delete(2);
-test.delete(4);
 
 prettyPrint(test.root);
+console.log(test.find(100));

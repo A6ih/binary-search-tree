@@ -119,4 +119,20 @@ export default class Tree {
     }
     return node;
   }
+
+  find(value, node = this.root) {
+    if (node === null) return node;
+
+    if (value === node.data) {
+      return node;
+    }
+
+    if (value < node.data) {
+      node = this.find(value, node.left);
+    } else {
+      node = this.find(value, node.right);
+    }
+
+    return node;
+  }
 }
