@@ -44,6 +44,14 @@ export default class Tree {
     return node;
   }
 
+  findMin(node) {
+    if (node.left === null) return node;
+
+    node = this.findMin(node.left);
+
+    return node;
+  }
+
   // Iterative insert
 
   //   insert(value) {
@@ -86,6 +94,29 @@ export default class Tree {
       node.right = this.insert(value, node.right);
     }
 
+    return node;
+  }
+
+  delete(value, node = this.root) {
+    if (node === null) return node;
+
+    if (value < node.data) {
+      node.left = this.delete(value, node.left);
+    } else if (value > node.data) {
+      node.right = this.delete(value, node.right);
+    } else {
+      if (node.right === null && node.left === null) {
+        node = null;
+      } else if (node.left === null) {
+        node = node.right;
+      } else if (node.right === null) {
+        node = node.left;
+      } else {
+        const minNode = this.findMin(node.right);
+        node.data = minNode.data;
+        node.right = this.delete(minNode.data, node.right);
+      }
+    }
     return node;
   }
 }
