@@ -135,4 +135,22 @@ export default class Tree {
 
     return node;
   }
+
+  levelOrder(callback, node = this.root) {
+    if (!callback) {
+      throw new Error("Callback function is required!");
+    }
+
+    if (!node) return;
+    const queque = [];
+    queque.push(node);
+
+    while (queque.length) {
+      let current = queque[0];
+      callback(current.data);
+      if (current.left !== null) queque.push(current.left);
+      if (current.right !== null) queque.push(current.right);
+      queque.shift();
+    }
+  }
 }

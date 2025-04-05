@@ -21,5 +21,9 @@ test.insert(1);
 test.delete(1);
 test.delete(2);
 
+function log(value) {
+  console.log(value);
+}
+
 prettyPrint(test.root);
-console.log(test.find(100));
+test.levelOrder(log);
