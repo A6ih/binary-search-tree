@@ -18,9 +18,10 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 test.insert(100);
 test.insert(99);
 test.insert(2);
-test.insert(1);
 test.delete(1);
-test.delete(2);
+test.insert(6500);
+test.insert(110);
+// test.delete(2);
 
 function log(value) {
   console.log(value);
@@ -33,3 +34,4 @@ prettyPrint(test.root);
 // test.postOrder(log);
 console.log(test.height(8));
 console.log(test.depth(99));
+console.log(test.isBalance());

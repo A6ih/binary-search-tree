@@ -224,4 +224,25 @@ export default class Tree {
 
     return this.findDepth(node.data);
   }
+
+  checkBalance(node = this.root, array) {
+    if (!node) return node;
+
+    const left = this.checkBalance(node.left, array);
+    const right = this.checkBalance(node.right, array);
+
+    if (Math.abs(this.findHeight(left) - this.findHeight(right)) > 1) {
+      array.push(false);
+    }
+
+    return node;
+  }
+
+  isBalance() {
+    const array = [];
+
+    this.checkBalance(this.root, array);
+
+    return array.length === 0 ? true : false;
+  }
 }
