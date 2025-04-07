@@ -155,6 +155,10 @@ export default class Tree {
   }
 
   inOrder(callback, node = this.root) {
+    if (!callback) {
+      throw new Error("Callback function is required!");
+    }
+
     if (!node) return node;
 
     this.inOrder(callback, node.left);
@@ -163,6 +167,10 @@ export default class Tree {
   }
 
   preOrder(callback, node = this.root) {
+    if (!callback) {
+      throw new Error("Callback function is required!");
+    }
+
     if (!node) return node;
 
     callback(node.data);
@@ -171,10 +179,49 @@ export default class Tree {
   }
 
   postOrder(callback, node = this.root) {
+    if (!callback) {
+      throw new Error("Callback function is required!");
+    }
+
     if (!node) return node;
 
     this.postOrder(callback, node.left);
     this.postOrder(callback, node.right);
     callback(node.data);
+  }
+
+  findHeight(node) {
+    if (!node) return -1;
+
+    const leftHeigth = this.findHeight(node.left);
+    const rightHeight = this.findHeight(node.right);
+
+    return Math.max(leftHeigth, rightHeight) + 1;
+  }
+
+  height(value) {
+    const outerNode = this.find(value);
+    if (!outerNode) return null;
+
+    return this.findHeight(outerNode);
+  }
+  
+  findDepth(value, node = this.root, count = 0) {
+    if(value === node.data) return 0
+
+    if(value < node.data) {
+      count = this.findDepth(value, node.left, count)
+    } else {
+      count = this.findDepth(value, node.right, count)
+    }
+
+    return count + 1;
+  }
+
+  depth(value) {
+    const node = this.find(value);
+    if (!node) return null;
+
+    return this.findDepth(node.data);
   }
 }

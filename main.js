@@ -16,6 +16,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 test.insert(100);
+test.insert(99);
 test.insert(2);
 test.insert(1);
 test.delete(1);
@@ -27,6 +28,8 @@ function log(value) {
 
 prettyPrint(test.root);
 //test.levelOrder(log);
-test.inOrder(log);
+// test.inOrder(log);
 // test.preOrder(log);
 // test.postOrder(log);
+console.log(test.height(8));
+console.log(test.depth(67));
