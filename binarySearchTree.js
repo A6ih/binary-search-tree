@@ -245,4 +245,21 @@ export default class Tree {
 
     return array.length === 0 ? true : false;
   }
+
+  rebalance() {
+    if (this.isBalance()) {
+      return false;
+    }
+
+    const newArr = [];
+
+    this.inOrder(function (value) {
+      newArr.push(value);
+    });
+
+    this.array = newArr;
+    this.root = this.buildTree(this.array);
+
+    return true;
+  }
 }

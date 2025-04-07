@@ -21,6 +21,7 @@ test.insert(2);
 test.delete(1);
 test.insert(6500);
 test.insert(110);
+test.insert(111);
 // test.delete(2);
 
 function log(value) {
@@ -35,3 +36,6 @@ prettyPrint(test.root);
 console.log(test.height(8));
 console.log(test.depth(99));
 console.log(test.isBalance());
+console.log(test.rebalance());
+
+prettyPrint(test.root);
