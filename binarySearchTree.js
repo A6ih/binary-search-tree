@@ -205,14 +205,14 @@ export default class Tree {
 
     return this.findHeight(outerNode);
   }
-  
-  findDepth(value, node = this.root, count = 0) {
-    if(value === node.data) return 0
 
-    if(value < node.data) {
-      count = this.findDepth(value, node.left, count)
+  findDepth(value, node = this.root, count = 0) {
+    if (value === node.data) return 0;
+
+    if (value < node.data) {
+      count = this.findDepth(value, node.left, count);
     } else {
-      count = this.findDepth(value, node.right, count)
+      count = this.findDepth(value, node.right, count);
     }
 
     return count + 1;

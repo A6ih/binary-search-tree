@@ -32,4 +32,4 @@ prettyPrint(test.root);
 // test.preOrder(log);
 // test.postOrder(log);
 console.log(test.height(8));
-console.log(test.depth(67));
+console.log(test.depth(99));
