@@ -26,4 +26,7 @@ function log(value) {
 }
 
 prettyPrint(test.root);
-test.levelOrder(log);
+//test.levelOrder(log);
+test.inOrder(log);
+// test.preOrder(log);
+// test.postOrder(log);

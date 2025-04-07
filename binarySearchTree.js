@@ -153,4 +153,28 @@ export default class Tree {
       queque.shift();
     }
   }
+
+  inOrder(callback, node = this.root) {
+    if (!node) return node;
+
+    this.inOrder(callback, node.left);
+    callback(node.data);
+    this.inOrder(callback, node.right);
+  }
+
+  preOrder(callback, node = this.root) {
+    if (!node) return node;
+
+    callback(node.data);
+    this.preOrder(callback, node.left);
+    this.preOrder(callback, node.right);
+  }
+
+  postOrder(callback, node = this.root) {
+    if (!node) return node;
+
+    this.postOrder(callback, node.left);
+    this.postOrder(callback, node.right);
+    callback(node.data);
+  }
 }
